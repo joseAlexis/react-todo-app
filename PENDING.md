@@ -1,0 +1,4 @@
+- [ X ] Create Project
+- [ ] Add into GH
+- [ ] Add husky and prettier
+- [ ] Add GH Actions
