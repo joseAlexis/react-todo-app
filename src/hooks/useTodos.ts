@@ -12,33 +12,27 @@ export function useTodos() {
       completed: false,
       createdAt: Date.now(),
     };
-    setTodos(prev => [newTodo, ...prev]);
+    setTodos((prev) => [newTodo, ...prev]);
   };
 
   const updateTodo = (id: string, title: string) => {
-    setTodos(prev =>
-      prev.map(todo => (todo.id === id ? { ...todo, title } : todo))
-    );
+    setTodos((prev) => prev.map((todo) => (todo.id === id ? { ...todo, title } : todo)));
   };
 
   const toggleTodo = (id: string) => {
-    setTodos(prev =>
-      prev.map(todo =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
+    setTodos((prev) =>
+      prev.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)),
     );
   };
 
   const deleteTodo = (id: string) => {
-    setTodos(prev => prev.filter(todo => todo.id !== id));
+    setTodos((prev) => prev.filter((todo) => todo.id !== id));
   };
 
-  const pendingCount = todos.filter(t => !t.completed).length;
-  const completedCount = todos.filter(t => t.completed).length;
+  const pendingCount = todos.filter((t) => !t.completed).length;
+  const completedCount = todos.filter((t) => t.completed).length;
 
-  const visibleTodos = showCompleted
-    ? todos
-    : todos.filter(t => !t.completed);
+  const visibleTodos = showCompleted ? todos : todos.filter((t) => !t.completed);
 
   return {
     todos: visibleTodos,

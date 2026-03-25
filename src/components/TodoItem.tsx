@@ -8,12 +8,7 @@ type Props = {
   onUpdate: (id: string, title: string) => void;
 };
 
-export function TodoItem({
-  todo,
-  onToggle,
-  onDelete,
-  onUpdate,
-}: Props) {
+export function TodoItem({ todo, onToggle, onDelete, onUpdate }: Props) {
   const [editing, setEditing] = useState(false);
   const [value, setValue] = useState(todo.title);
 
@@ -25,24 +20,16 @@ export function TodoItem({
   return (
     <div className="flex items-center justify-between border p-2 rounded mb-2">
       <div className="flex items-center gap-2 flex-1">
-        <input
-          type="checkbox"
-          checked={todo.completed}
-          onChange={() => onToggle(todo.id)}
-        />
+        <input type="checkbox" checked={todo.completed} onChange={() => onToggle(todo.id)} />
 
         {editing ? (
           <input
             value={value}
-            onChange={e => setValue(e.target.value)}
+            onChange={(e) => setValue(e.target.value)}
             className="border p-1 flex-1"
           />
         ) : (
-          <span
-            className={`flex-1 ${
-              todo.completed ? "line-through text-gray-400" : ""
-            }`}
-          >
+          <span className={`flex-1 ${todo.completed ? "line-through text-gray-400" : ""}`}>
             {todo.title}
           </span>
         )}

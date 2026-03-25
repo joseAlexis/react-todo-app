@@ -8,15 +8,10 @@ type Props = {
   onUpdate: (id: string, title: string) => void;
 };
 
-export function TodoList({
-  todos,
-  onToggle,
-  onDelete,
-  onUpdate,
-}: Props) {
+export function TodoList({ todos, onToggle, onDelete, onUpdate }: Props) {
   return (
     <div>
-      {todos.map(todo => (
+      {todos.map((todo) => (
         <TodoItem
           key={todo.id}
           todo={todo}

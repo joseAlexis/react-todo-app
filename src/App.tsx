@@ -22,17 +22,12 @@ function App() {
         pending={pendingCount}
         completed={completedCount}
         showCompleted={showCompleted}
-        toggleView={() => setShowCompleted(prev => !prev)}
+        toggleView={() => setShowCompleted((prev) => !prev)}
       />
 
       <TodoInput onAdd={addTodo} />
 
-      <TodoList
-        todos={todos}
-        onToggle={toggleTodo}
-        onDelete={deleteTodo}
-        onUpdate={updateTodo}
-      />
+      <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} onUpdate={updateTodo} />
     </div>
   );
 }
