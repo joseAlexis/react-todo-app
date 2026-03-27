@@ -1,6 +1,0 @@
-- [X] Create Project
-- [X] Monorepo
-- [ ] Generate new README
-- [ ] Add into GH
-- [ ] Add husky and prettier
-- [ ] Add GH Actions

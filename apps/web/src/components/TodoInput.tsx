@@ -22,8 +22,12 @@ export function TodoInput({ onAdd }: Props) {
         onChange={(e) => setValue(e.target.value)}
         className="border p-2 flex-1 rounded"
         placeholder="Add a new todo..."
+        data-testid="todo-input"
+        name="todo"
       />
-      <button className="bg-blue-500 text-white px-4 rounded">Add</button>
+      <button className="bg-blue-500 text-white px-4 rounded" data-testid="add-todo-button">
+        Add
+      </button>
     </form>
   );
 }
