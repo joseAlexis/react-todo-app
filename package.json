@@ -7,9 +7,22 @@
     "build": "pnpm --filter web build",
     "start": "pnpm --filter web preview",
     "lint": "pnpm --filter web lint",
-    "prepare": "husky install"
+    "lint:fix": "pnpm --filter web lint:fix",
+    "format": "pnpm --filter web format",
+    "format:check": "pnpm --filter web format:check",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "apps/web/**/*.{js,ts,jsx,tsx}": [
+      "pnpm --filter web lint:fix"
+    ],
+    "apps/web/**/*.{js,ts,jsx,tsx,css,md}": [
+      "pnpm --filter web format"
+    ]
   },
   "devDependencies": {
-    "husky": "^8.0.0"
+    "husky": "^8.0.0",
+    "lint-staged": "^16.4.0"
   }
 }
