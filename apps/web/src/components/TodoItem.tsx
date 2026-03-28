@@ -11,10 +11,25 @@ type Props = {
 export function TodoItem({ todo, onToggle, onDelete, onUpdate }: Props) {
   const [editing, setEditing] = useState(false);
   const [value, setValue] = useState(todo.title);
+  const [saving, setSaving] = useState(false);
 
-  const handleUpdate = () => {
-    onUpdate(todo.id, value);
+  const handleUpdate = async () => {
+    if (saving) return;
+
+    const trimmed = value.trim();
+    if (!trimmed) return;
+
+    setSaving(true);
+
+    await onUpdate(todo.id!, trimmed);
+
+    setSaving(false);
     setEditing(false);
+  };
+
+  const handleStartEditing = () => {
+    if (todo.completed) return;
+    setEditing(true);
   };
 
   return (
@@ -23,7 +38,7 @@ export function TodoItem({ todo, onToggle, onDelete, onUpdate }: Props) {
         <input
           type="checkbox"
           checked={todo.completed}
-          onChange={() => onToggle(todo.id)}
+          onChange={() => onToggle(todo.id!)}
           data-testid={`checkbox-todo-${todo.id}`}
         />
 
@@ -31,6 +46,15 @@ export function TodoItem({ todo, onToggle, onDelete, onUpdate }: Props) {
           <input
             value={value}
             onChange={(e) => setValue(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleUpdate();
+              }
+              if (e.key === "Escape") {
+                setEditing(false);
+                setValue(todo.title); // reset value
+              }
+            }}
             className="border p-1 flex-1"
             data-testid="edit-todo-title-input"
           />
@@ -50,11 +74,13 @@ export function TodoItem({ todo, onToggle, onDelete, onUpdate }: Props) {
             Save
           </button>
         ) : (
-          <button onClick={() => setEditing(true)} data-testid="edit-todo-button">
-            Edit
-          </button>
+          !todo.completed && (
+            <button onClick={handleStartEditing} data-testid="edit-todo-button">
+              Edit
+            </button>
+          )
         )}
-        <button onClick={() => onDelete(todo.id)} data-testid="delete-todo-button">
+        <button onClick={() => onDelete(todo.id!)} data-testid="delete-todo-button">
           Delete
         </button>
       </div>

@@ -1,0 +1,15 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Jose Bolanos",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "json-server --watch db.json --port 3001"
+  },
+  "dependencies": {
+    "json-server": "1.0.0-beta.15"
+  }
+}
