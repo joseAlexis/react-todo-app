@@ -1,35 +1,11 @@
-import { useTodos } from "./hooks/useTodos";
-import { Header } from "./components/Header";
-import { TodoInput } from "./components/TodoInput";
-import { TodoList } from "./components/TodoList";
+import { useAuth } from "./hooks/useAuth";
+import { LoginPage } from "./pages/LoginPage";
+import { TodoPage } from "./pages/TodoPage";
 
 function App() {
-  const {
-    todos,
-    addTodo,
-    updateTodo,
-    toggleTodo,
-    deleteTodo,
-    pendingCount,
-    completedCount,
-    showCompleted,
-    setShowCompleted,
-  } = useTodos();
+  const { user } = useAuth();
 
-  return (
-    <div className="max-w-xl mx-auto p-4">
-      <Header
-        pending={pendingCount}
-        completed={completedCount}
-        showCompleted={showCompleted}
-        toggleView={() => setShowCompleted((prev) => !prev)}
-      />
-
-      <TodoInput onAdd={addTodo} />
-
-      <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} onUpdate={updateTodo} />
-    </div>
-  );
+  return user ? <TodoPage /> : <LoginPage />;
 }
 
 export default App;

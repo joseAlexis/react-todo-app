@@ -1,29 +1,45 @@
-type Props = {
+import { useAuth } from "../hooks/useAuth";
+
+type HeaderProps = {
   pending: number;
   completed: number;
   showCompleted: boolean;
   toggleView: () => void;
 };
 
-export function Header({ pending, completed, showCompleted, toggleView }: Props) {
+export function Header({
+  pending,
+  completed,
+  showCompleted,
+  toggleView,
+}: HeaderProps) {
+  const { logout } = useAuth();
+
   return (
     <div className="flex justify-between items-center mb-4">
-      <div className="space-x-4">
-        <span className="bg-blue-500 text-white px-3 py-1 rounded" data-testid="pending-count">
-          Pending: {pending}
-        </span>
-        <span className="bg-green-500 text-white px-3 py-1 rounded" data-testid="completed-count">
-          Completed: {completed}
-        </span>
+      <div>
+        <h1 className="text-xl font-bold">Todos</h1>
+        <p className="text-sm">
+          Pending: {pending} | Completed: {completed}
+        </p>
       </div>
 
-      <button
-        onClick={toggleView}
-        className="text-sm underline text-gray-600"
-        data-testid="filter-completed-button"
-      >
-        {showCompleted ? "Hide Completed" : "Show Completed"}
-      </button>
+      <div className="flex gap-2">
+        <button
+          onClick={toggleView}
+          className="text-sm bg-gray-200 px-2 py-1 rounded"
+        >
+          {showCompleted ? "Hide Completed" : "Show Completed"}
+        </button>
+
+        <button
+          onClick={logout}
+          className="text-sm bg-red-500 text-white px-2 py-1 rounded"
+          data-testid="logout-button"
+        >
+          Logout
+        </button>
+      </div>
     </div>
   );
 }

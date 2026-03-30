@@ -7,13 +7,14 @@ import {
   deleteTodoApi,
 } from "../services/todoService";
 
+
+// CHECK WITH AUTH NO TODOS ARE DISPLAYED WHEN USER LOGS IN PROBABLY A JSON-SERVER MISSING REQUEST PARAM
 export function useTodos() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [showCompleted, setShowCompleted] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // 🔹 LOAD TODOS
   useEffect(() => {
     const loadTodos = async () => {
       try {
@@ -29,13 +30,14 @@ export function useTodos() {
     loadTodos();
   }, []);
 
-  // 🔹 CREATE
   const addTodo = async (title: string) => {
+    const user = JSON.parse(localStorage.getItem("user") || "null");
     try {
       const newTodo = await createTodo({
         title,
         completed: false,
         createdAt: Date.now(),
+        userId: user.id,
       });
 
       setTodos((prev) => [newTodo, ...prev]);
@@ -44,7 +46,6 @@ export function useTodos() {
     }
   };
 
-  // 🔹 UPDATE TITLE
   const updateTodo = async (id: string, title: string) => {
     try {
       const updated = await updateTodoApi(id, { title });
@@ -57,7 +58,6 @@ export function useTodos() {
     }
   };
 
-  // 🔹 TOGGLE
   const toggleTodo = async (id: string) => {
     const current = todos.find((t) => t.id === id);
     if (!current) return;
@@ -77,7 +77,6 @@ export function useTodos() {
     }
   };
 
-  // 🔹 DELETE
   const deleteTodo = async (id: string) => {
     try {
       await deleteTodoApi(id);
@@ -88,7 +87,6 @@ export function useTodos() {
     }
   };
 
-  // 🔹 DERIVED STATE
   const pendingCount = todos.filter((t) => !t.completed).length;
   const completedCount = todos.filter((t) => t.completed).length;
 
