@@ -5,18 +5,20 @@ A modern, scalable Todo application built with a monorepo architecture, focused 
 - ✅ Create, edit, delete todos
 - 📌 Mark todos as completed / pending
 - 👀 Hide/show completed tasks (enabled by default)
+- 🔐 Authentication
 - 🧪 Test-friendly structure with data-testid support
+- 💾 Persistent state (Json-server atm)
 
 ## 📌 Future Improvements
-- 🔄 Backend integration (API)
-- 🔐 Authentication
+- 🔄 Add workspaces
+- 🎒 Add proper API project into monorepo
 - 🔍 Filter todos (All / Active / Completed)
-- 💾 Persistent state (local storage or backend-ready)
+
 
 ## 🛠️ Tech Stack
 - React – UI library
 - TypeScript – Static typing
-- Vite / Next.js (depending on your setup) – Build tool / framework
+- Vite
 
 ##  Code Quality
 - ESLint – Linting
@@ -28,11 +30,6 @@ A modern, scalable Todo application built with a monorepo architecture, focused 
 - Unit tests → Components & hooks
 - Integration tests → Feature flows
 - E2E tests (Cypress and PW) → Full user journeys
-
-### Focus areas:
-- Stability (avoid flaky tests)
-- Maintainability
-- Real user behavior simulation
 
 ## Package Management
 - pnpm – Fast, efficient dependency management
