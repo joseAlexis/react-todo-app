@@ -1,19 +1,15 @@
-# Successful User Registration
+# Successful User Login
 
-**Priority**: High.
-**Severity**: Critical.
+**Priority**: Critical.
 
 ## Preconditions:
-- Email is not registered
+- The account is already registered.
 
 ## Steps:
-1.	Navigate to /login
-2.	Switch to “Register” mode
-3.	Enter valid email
-4.	Enter valid password
-5.	Submit form
+1.	Navigate to /login.
+2.	Enter valid email.
+3.	Enter valid password.
+4.	Submit form.
 
 ## Expected Result:
-- User is successfully registered
-- Success message is displayed
-- User is redirected to login page
+- User is redirected to todos page.

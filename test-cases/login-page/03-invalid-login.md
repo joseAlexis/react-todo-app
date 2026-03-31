@@ -1,13 +1,12 @@
 # Login with Invalid Credentials
 
-**Priority**: High
-**Severity**: Critical
+**Priority**: Critical.
 
 ## Steps:
-1.	Enter invalid email/password
-2.	Submit
+1.	Enter invalid email/password.
+2.	Submit.
 
 ## Expected Result:
-- Login fails
-- Error message displayed
-- No redirect
+- Login fails.
+- Error message displayed.
+- No redirect.

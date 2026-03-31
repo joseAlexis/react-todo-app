@@ -4,7 +4,7 @@ import type { User } from "../types/user";
 const API_URL = `${import.meta.env.VITE_API_URL}/todos`;
 
 export const getTodos = async () => {
-  const user: User = JSON.parse(localStorage.getItem("user") || "null");
+  const user: User = JSON.parse(sessionStorage.getItem("user") || "null");
 
   const res = await fetch(`${API_URL}?userId=${user.id}`);
   return res.json();

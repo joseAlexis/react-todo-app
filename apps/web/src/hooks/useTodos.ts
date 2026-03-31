@@ -31,7 +31,7 @@ export function useTodos() {
   }, []);
 
   const addTodo = async (title: string) => {
-    const user = JSON.parse(localStorage.getItem("user") || "null");
+    const user = JSON.parse(sessionStorage.getItem("user") || "null");
     try {
       const newTodo = await createTodo({
         title,
