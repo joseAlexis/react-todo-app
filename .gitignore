@@ -28,3 +28,6 @@ db.json
 
 # Environment variables
 .env
+
+# Cypress env
+cypress.env.json
