@@ -13,14 +13,20 @@ export function Header({ pending, completed, showCompleted, toggleView }: Header
   return (
     <div className="flex justify-between items-center mb-4">
       <div>
-        <h1 className="text-xl font-bold">Todos</h1>
+        <h1 className="text-xl font-bold" data-testid="page-title">
+          Todos
+        </h1>
         <p className="text-sm">
           Pending: {pending} | Completed: {completed}
         </p>
       </div>
 
       <div className="flex gap-2">
-        <button onClick={toggleView} className="text-sm bg-gray-200 px-2 py-1 rounded">
+        <button
+          onClick={toggleView}
+          className="text-sm bg-gray-200 px-2 py-1 rounded"
+          data-testid="view-todos-toggle-button"
+        >
           {showCompleted ? "Hide Completed" : "Show Completed"}
         </button>
 
