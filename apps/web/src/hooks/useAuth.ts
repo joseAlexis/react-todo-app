@@ -15,7 +15,7 @@ export function useAuth() {
     sessionStorage.removeItem("user");
     setUser(null);
 
-    //refresh page 
+    //refresh page
     window.location.reload();
   };
 

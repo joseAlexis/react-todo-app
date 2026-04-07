@@ -13,15 +13,7 @@
     "format": "pnpm --filter web format",
     "format:check": "pnpm --filter web format:check",
     "prepare": "husky install",
-    "lint-staged": "lint-staged"
-  },
-  "lint-staged": {
-    "apps/web/**/*.{js,ts,jsx,tsx}": [
-      "pnpm --filter web lint:fix"
-    ],
-    "apps/web/**/*.{js,ts,jsx,tsx,css,md}": [
-      "pnpm --filter web format"
-    ]
+    "lint-staged": "pnpm --filter web lint-staged"
   },
   "devDependencies": {
     "concurrently": "^9.2.1",

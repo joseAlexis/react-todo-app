@@ -12,6 +12,14 @@
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
+  "lint-staged": {
+    "/**/*.{js,ts,jsx,tsx}": [
+      "pnpm --filter web lint:fix"
+    ],
+    "/**/*.{js,ts,jsx,tsx,css,md}": [
+      "pnpm --filter web format"
+    ]
+  },
   "dependencies": {
     "react": "^19.2.4",
     "react-dom": "^19.2.4"

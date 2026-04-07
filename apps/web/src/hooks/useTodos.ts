@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Todo } from "../types/todo";
-import {
-  getTodos,
-  createTodo,
-  updateTodoApi,
-  deleteTodoApi,
-} from "../services/todoService";
-
+import { getTodos, createTodo, updateTodoApi, deleteTodoApi } from "../services/todoService";
 
 // CHECK WITH AUTH NO TODOS ARE DISPLAYED WHEN USER LOGS IN PROBABLY A JSON-SERVER MISSING REQUEST PARAM
 export function useTodos() {
@@ -50,9 +44,7 @@ export function useTodos() {
     try {
       const updated = await updateTodoApi(id, { title });
 
-      setTodos((prev) =>
-        prev.map((todo) => (todo.id === id ? { ...todo, ...updated } : todo))
-      );
+      setTodos((prev) => prev.map((todo) => (todo.id === id ? { ...todo, ...updated } : todo)));
     } catch (err) {
       console.error(err);
     }
@@ -67,11 +59,7 @@ export function useTodos() {
         completed: !current.completed,
       });
 
-      setTodos((prev) =>
-        prev.map((todo) =>
-          todo.id === id ? { ...todo, ...updated } : todo
-        )
-      );
+      setTodos((prev) => prev.map((todo) => (todo.id === id ? { ...todo, ...updated } : todo)));
     } catch (err) {
       console.error(err);
     }
@@ -90,9 +78,7 @@ export function useTodos() {
   const pendingCount = todos.filter((t) => !t.completed).length;
   const completedCount = todos.filter((t) => t.completed).length;
 
-  const visibleTodos = showCompleted
-    ? todos
-    : todos.filter((t) => !t.completed);
+  const visibleTodos = showCompleted ? todos : todos.filter((t) => !t.completed);
 
   return {
     todos: visibleTodos,

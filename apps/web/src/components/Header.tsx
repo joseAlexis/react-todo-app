@@ -7,12 +7,7 @@ type HeaderProps = {
   toggleView: () => void;
 };
 
-export function Header({
-  pending,
-  completed,
-  showCompleted,
-  toggleView,
-}: HeaderProps) {
+export function Header({ pending, completed, showCompleted, toggleView }: HeaderProps) {
   const { logout } = useAuth();
 
   return (
@@ -25,10 +20,7 @@ export function Header({
       </div>
 
       <div className="flex gap-2">
-        <button
-          onClick={toggleView}
-          className="text-sm bg-gray-200 px-2 py-1 rounded"
-        >
+        <button onClick={toggleView} className="text-sm bg-gray-200 px-2 py-1 rounded">
           {showCompleted ? "Hide Completed" : "Show Completed"}
         </button>
 

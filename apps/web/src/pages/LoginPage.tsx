@@ -35,7 +35,7 @@ export function LoginPage() {
       } else {
         const user = await login(email, password);
         loginUser(user);
-        
+
         // 👇 force re-render fallback
         window.location.reload();
       }
