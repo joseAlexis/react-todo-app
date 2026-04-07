@@ -9,7 +9,8 @@
     "build": "pnpm --filter web build",
     "start": "pnpm --filter web preview",
     "prepare": "husky install",
-    "lint-staged": "pnpm --filter web lint-staged"
+    "lint-staged": "pnpm --filter web lint-staged",
+    "test:cy:e2e": "pnpm --filter cypress-e2e test"
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
