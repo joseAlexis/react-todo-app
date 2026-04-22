@@ -3,16 +3,16 @@ import type { User } from "../types/user";
 
 export function useAuth() {
   const [user, setUser] = useState(() => {
-    return JSON.parse(sessionStorage.getItem("user") || "null");
+    return JSON.parse(localStorage.getItem("user") || "null");
   });
 
   const loginUser = (userData: User) => {
-    sessionStorage.setItem("user", JSON.stringify(userData));
+    localStorage.setItem("user", JSON.stringify(userData));
     setUser(userData);
   };
 
   const logout = () => {
-    sessionStorage.removeItem("user");
+    localStorage.removeItem("user");
     setUser(null);
 
     //refresh page
